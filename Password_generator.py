@@ -5,10 +5,13 @@ import secrets
 from typing import Counter
 # * code was tested with 3.8.3 may not work with other versions 
 
+def user_input():
+    user = int(input("please enter how long you would like your password to be"))
+    return (user)
 
 def number_generator():
     selected_numbers = [] #! The next line should be in its own function
-    password_length = 11 #TODO: should be an input later on 
+    password_length = int(input("please enter how long you would like your password to be "))
     length_for_string = int(password_length / 2)
     numbers = string.digits
     if password_length % 2 == 1:
@@ -84,7 +87,8 @@ def making_the_pass(i, x, w, g):
 
 
 #? should really be in a function so I can use with other programs 
+input_user = user_input()
 number = (number_generator())
 character = character_generator(number[1])
 special = special_character_generator(character[1]) 
-print(making_the_pass(number[0], character[0], special, 11))
+print(making_the_pass(number[0], character[0], special, input_user))
