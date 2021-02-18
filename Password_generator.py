@@ -69,17 +69,14 @@ def special_character_generator(i):
 # * i number, x character, w special 
 def making_the_pass(i, x, w, g):
     temp_storage = []
-    g = 11
+    counter = g
+    lists = i + x + w
     counters = 0
     while counters < g:
-        random = secrets.randbelow(3)
-        if random == 0:
-            temp_storage.append(secrets.choice(i))
-        if random == 1:
-            temp_storage.append(secrets.choice(x))
-        if random == 2:
-            temp_storage.append(secrets.choice(w))
-        counters += 1
+        random = secrets.randbelow(g)
+        temp_characters = lists.pop(random)
+        temp_storage.append(temp_characters)
+        g -= 1
     return "".join(temp_storage)
 
 
