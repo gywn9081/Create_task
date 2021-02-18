@@ -2,7 +2,8 @@ import random
 import time
 import string
 import secrets
-
+from typing import Counter
+# * code was tested with 3.8.3 may not work with other versions 
 
 
 def number_generator():
@@ -20,7 +21,7 @@ def number_generator():
 
 
 # * This function should get the x param from number_generator for space left
-def character_generator(i, x):
+def character_generator(x):
     #! I could not find a better way of defineing my vars before reference
     has1, has0, acceptable = False, False, False 
     choice = []
@@ -57,5 +58,36 @@ def character_generator(i, x):
             characters.append(secrets.choice(lowercase))
     return (characters, characters_remaining)
 
-print(number_generator())
-print(character_generator(0, 6))
+
+def special_character_generator(i):
+    chosen_characters = []
+    special_chara = "@?{[}]-+!#$%^&*()_~"
+    for x in range(i):
+        chosen_characters.append(secrets.choice(special_chara))
+    return (chosen_characters)
+
+# * i number, x character, w special 
+def making_the_pass(i, x, w, g):
+    temp_storage = []
+    g = 11
+    counters = 0
+    while counters < g:
+        random = secrets.randbelow(3)
+        if random == 0:
+            temp_storage.append(secrets.choice(i))
+        if random == 1:
+            temp_storage.append(secrets.choice(x))
+        if random == 2:
+            temp_storage.append(secrets.choice(w))
+        counters += 1
+    return "".join(temp_storage)
+
+
+
+
+
+#? should really be in a function so I can use with other programs 
+number = (number_generator())
+character = character_generator(number[1])
+special = special_character_generator(character[1]) 
+print(making_the_pass(number[0], character[0], special, 11))
