@@ -1,17 +1,10 @@
-import random
-import time
-import string
-import secrets
-from typing import Counter
-# * code was tested with 3.8.3 may not work with other versions 
-
 def user_input():
-    user = int(input("please enter how long you would like your password to be"))
+    user = int(input("please enter how long you would like your password to be "))
     return (user)
 
-def number_generator():
+def number_generator(i):
     selected_numbers = [] #! The next line should be in its own function
-    password_length = int(input("please enter how long you would like your password to be "))
+    password_length = i
     length_for_string = int(password_length / 2)
     numbers = string.digits
     if password_length % 2 == 1:
@@ -23,9 +16,7 @@ def number_generator():
     return (selected_numbers, space_left)
 
 
-# * This function should get the x param from number_generator for space left
 def character_generator(x):
-    #! I could not find a better way of defineing my vars before reference
     has1, has0, acceptable = False, False, False 
     choice = []
     counter = 0
@@ -69,6 +60,7 @@ def special_character_generator(i):
         chosen_characters.append(secrets.choice(special_chara))
     return (chosen_characters)
 
+
 # * i number, x character, w special 
 def making_the_pass(i, x, w, g):
     temp_storage = []
@@ -83,12 +75,31 @@ def making_the_pass(i, x, w, g):
     return "".join(temp_storage)
 
 
+def initialize():
+    input_user = user_input()
+    number = (number_generator(input_user))
+    character = character_generator(number[1])
+    special = special_character_generator(character[1]) 
+    print(making_the_pass(number[0], character[0], special, input_user))
+    reruns()
 
 
+def reruns():
+    again = input("Would you like to generate another password \n").upper()
+    if again == "YES":
+        initialize()
+    elif again == "NO":
+        print("hi")
+        quit
+    else:
+        print("Sorry we could not get that please try again")
+        time.sleep(.2)
+        reruns()
 
-#? should really be in a function so I can use with other programs 
-input_user = user_input()
-number = (number_generator())
-character = character_generator(number[1])
-special = special_character_generator(character[1]) 
-print(making_the_pass(number[0], character[0], special, input_user))
+if __name__ == "__main__":
+    import random
+    import time
+    import string
+    import secrets
+    from typing import Counter
+    initialize()
