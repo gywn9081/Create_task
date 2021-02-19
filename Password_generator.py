@@ -1,6 +1,14 @@
+import random
+import time
+import string
+import secrets    
+from typing import Counter
+
+
 def user_input():
     user = int(input("please enter how long you would like your password to be "))
     return (user)
+
 
 def number_generator(i):
     selected_numbers = [] #! The next line should be in its own function
@@ -96,10 +104,6 @@ def reruns():
         time.sleep(.2)
         reruns()
 
+
 if __name__ == "__main__":
-    import random
-    import time
-    import string
-    import secrets
-    from typing import Counter
     initialize()
