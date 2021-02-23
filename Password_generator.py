@@ -63,7 +63,7 @@ def character_generator(x):
 
 def special_character_generator(i):
     chosen_characters = []
-    special_chara = "@?{[}]-+!#$%^&*()_~"
+    special_chara = "@?{[}]-+!$%^&*()_~"
     for x in range(i):
         chosen_characters.append(secrets.choice(special_chara))
     return (chosen_characters)
@@ -97,12 +97,19 @@ def reruns():
     if again == "YES":
         initialize()
     elif again == "NO":
-        print("hi")
-        quit
+        print("Bye")
+        quit()
     else:
         print("Sorry we could not get that please try again")
         time.sleep(.2)
         reruns()
+
+
+def storage(i):
+    store = open("password.py", "a")
+    store.write(i + ",")
+    store.close
+
 
 if __name__ == "__main__":
     initialize()
