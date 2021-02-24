@@ -87,7 +87,8 @@ def initialize():
     number = (number_generator(input_user))
     character = character_generator(number[1])
     special = special_character_generator(character[1]) 
-    print(making_the_pass(number[0], character[0], special, input_user))
+    password = making_the_pass(number[0], character[0], special, input_user)
+    storage(password)
     reruns()
 
 
