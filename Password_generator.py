@@ -11,7 +11,6 @@ def user_input():
     except ValueError:
         print("sorry something went wrong please try again \n")
         user_input()
-    print(user)
     return (user)
 
 
