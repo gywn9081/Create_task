@@ -5,12 +5,18 @@ from typing import Counter
 
 
 def user_input():
-    user = int(input("please enter how long you would like your password to be "))
+    user = input("please enter how long you would like your password to be ")
+    try:
+        user = int(user)
+    except ValueError:
+        print("sorry something went wrong please try again \n")
+        user_input()
+    print(user)
     return (user)
 
 
 def number_generator(i):
-    selected_numbers = [] #! The next line should be in its own function
+    selected_numbers = []
     password_length = i
     length_for_string = int(password_length / 2)
     numbers = string.digits
@@ -111,5 +117,13 @@ def storage(i):
     store.close
 
 
+def clear():
+    question = input("Would you like to clear the saved passwords?").upper()
+    if question == "YES":
+        store = open("password.py", "w")
+        store.write("")
+        store.close
+
 if __name__ == "__main__":
+    clear()
     initialize()
