@@ -3,7 +3,6 @@ import string
 import secrets
 from typing import Counter
 
-
 def user_input():
     user = input("please enter how long you would like your password to be ")
     try:
@@ -76,7 +75,6 @@ def special_character_generator(i):
 # * i number, x character, w special 
 def making_the_pass(i, x, w, g):
     temp_storage = []
-    counter = g
     lists = i + x + w
     counters = 0
     while counters < g:
@@ -117,11 +115,12 @@ def storage(i):
 
 
 def clear():
-    question = input("Would you like to clear the saved passwords?").upper()
+    question = input("Would you like to clear the saved passwords? ").upper()
     if question == "YES":
         store = open("password.py", "w")
         store.write("")
         store.close
+
 
 if __name__ == "__main__":
     clear()
