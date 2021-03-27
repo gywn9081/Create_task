@@ -3,14 +3,32 @@ import string
 import secrets
 from typing import Counter
 
-def user_input():
-    user = input("please enter how long you would like your password to be ")
-    try:
-        user = int(user)
-    except ValueError:
-        print("sorry something went wrong please try again \n")
-        user_input()
-    return (user)
+def pull_input():
+    user = int(input("please enter how long you would like your password to be "))
+    return (user)    
+
+def user_input_processing(length):
+    breaking = False
+    sec_auth = 0
+    while breaking == False:
+        if sec_auth == 1:
+            length = value    
+        if length > 10:
+            try:
+                user = int(length)
+            except ValueError:
+                print("Sorry something went wrong please try again \n")
+                sec_auth = 1
+                if sec_auth == 1:
+                    value = int(input("please enter how long you would like your password to be "))
+            print("your password is valid ")
+            breaking = True
+        elif length <= 10:
+            print("Sorry this password is to short")
+            sec_auth = 1
+            if sec_auth == 1:
+                value = int(input("please enter how long you would like your password to be "))
+    return(length)
 
 
 def number_generator(i):
@@ -86,7 +104,7 @@ def making_the_pass(i, x, w, g):
 
 
 def initialize():
-    input_user = user_input()
+    input_user = user_input_processing(pull_input())
     number = (number_generator(input_user))
     character = character_generator(number[1])
     special = special_character_generator(character[1]) 
@@ -120,7 +138,8 @@ def clear():
         store = open("password.py", "w")
         store.write("")
         store.close
-
+    if question == "NO":
+        print("Your passwords will not be cleared")
 
 if __name__ == "__main__":
     clear()

@@ -2,3 +2,4 @@
 *.json
 password.py
 saved_passwords.txt
+create-task.code-workspace
